@@ -72,6 +72,8 @@ python webserver.py &
 
 netstat -tlpn
 
+exit
+
 
 TASK 7
 nano package.yaml
@@ -79,6 +81,7 @@ nano package.yaml
 sudo docker save -o rootfs.tar iox_aarch64_webserver
 
 ls
+
 
 
 
