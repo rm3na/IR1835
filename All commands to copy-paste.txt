@@ -48,9 +48,9 @@ mkdir iox_aarch64_webserver
 
 cd iox_aarch64_webserver
 
-vi webserver.py
+nano webserver.py
 
-vi Dockerfile 
+nano Dockerfile 
 
 cp /usr/bin/qemu-aarch64-static .
 
@@ -68,11 +68,12 @@ netstat -tlpn
 
 
 TASK 7
-vi package.yaml
+nano package.yaml
 
 sudo docker save -o rootfs.tar iox_aarch64_webserver
 
 ls
+
 
 
 
