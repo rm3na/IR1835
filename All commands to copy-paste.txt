@@ -46,6 +46,8 @@ sudo docker run -v /usr/bin/qemu-aarch64-static:/usr/bin/qemu-aarch64-static --r
 
 uname -a
 
+exit
+
 
 TASK 5
 mkdir iox_aarch64_webserver 
@@ -77,6 +79,7 @@ nano package.yaml
 sudo docker save -o rootfs.tar iox_aarch64_webserver
 
 ls
+
 
 
 
