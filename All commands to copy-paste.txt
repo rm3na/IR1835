@@ -1,9 +1,11 @@
 TASK 1
-cp /mnt/c/data/ ioxclient_1.17.0.0_linux_amd64.tar.gz /home/student
+cp /mnt/c/data/ioxclient_1.17.0.0_linux_amd64.tar.gz /home/student
+
+cd /home/student
 
 tar -xvzf ioxclient_1.17.0.0_linux_amd64.tar.gz 
 
-PATH=$PATH:/home/student/ioxclient_1.17.0.0_linux_amd64/
+export PATH=$PATH:/home/student/ioxclient_1.17.0.0_linux_amd64/
 
 ioxclient -v
 
@@ -23,9 +25,10 @@ sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-sudo usermod -a -G docker admin 
-
 newgrp docker 
+
+sudo usermod -a -G docker student
+
 
 
 TASK 3
@@ -35,7 +38,7 @@ ls -al /usr/bin/qemu-*static
 
 
 TASK 4
-docker run -v /usr/bin/qemu-aarch64-static:/usr/bin/qemu-aarch64-static --rm -ti arm64v8/alpine:3.7
+sudo docker run -v /usr/bin/qemu-aarch64-static:/usr/bin/qemu-aarch64-static --rm -ti arm64v8/alpine:3.7
 
 uname -a
 
@@ -45,7 +48,7 @@ mkdir iox_aarch64_webserver
 
 cd iox_aarch64_webserver
 
-vi server.py
+vi webserver.py
 
 vi Dockerfile 
 
@@ -53,9 +56,9 @@ cp /usr/bin/qemu-aarch64-static .
 
 
 TASK 6
-docker build -t iox_aarch64_webserver .
+sudo docker buildx build --platform linux/arm64 -t iox_aarch64_webserver .
 
-docker run -ti iox_aarch64_webserver
+sudo docker run -ti iox_aarch64_webserver
 
 uname -a 
 
@@ -67,9 +70,10 @@ netstat -tlpn
 TASK 7
 vi package.yaml
 
-docker save -o rootfs.tar iox_aarch64_webserver
+sudo docker save -o rootfs.tar iox_aarch64_webserver
 
 ls
+
 
 
 
