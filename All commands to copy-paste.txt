@@ -1,7 +1,16 @@
 TASK 1
+
+pwd
+
+ls
+
+cd
+
+pwd
+
 cp /mnt/c/data/ioxclient_1.17.0.0_linux_amd64.tar.gz /home/student
 
-cd /home/student
+ls
 
 tar -xvzf ioxclient_1.17.0.0_linux_amd64.tar.gz 
 
@@ -85,6 +94,7 @@ sudo chown student:student rootfs.tar
 ioxclient package .
 
 ls
+
 
 
 
