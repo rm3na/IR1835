@@ -80,7 +80,10 @@ nano package.yaml
 
 sudo docker save -o rootfs.tar iox_aarch64_webserver
 
+sudo chown student:student rootfs.tar
+
 ls
+
 
 
 
