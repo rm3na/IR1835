@@ -1,0 +1,78 @@
+TASK 1
+cp /mnt/c/data/ ioxclient_1.17.0.0_linux_amd64.tar.gz /home/student
+
+tar -xvzf ioxclient_1.17.0.0_linux_amd64.tar.gz 
+
+PATH=$PATH:/home/student/ioxclient_1.17.0.0_linux_amd64/
+
+ioxclient -v
+
+
+TASK 2
+sudo apt-get update 
+
+sudo apt-get install apt-transport-https ca-certificates curl gnupg2
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker.gpg
+
+sudo apt-get update
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/docker.gpg] https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update 
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+sudo usermod -a -G docker admin 
+
+newgrp docker 
+
+
+TASK 3
+sudo apt-get install qemu-user qemu-user-static
+
+ls -al /usr/bin/qemu-*static 
+
+
+TASK 4
+docker run -v /usr/bin/qemu-aarch64-static:/usr/bin/qemu-aarch64-static --rm -ti arm64v8/alpine:3.7
+
+uname -a
+
+
+TASK 5
+mkdir iox_aarch64_webserver 
+
+cd iox_aarch64_webserver
+
+vi server.py
+
+vi Dockerfile 
+
+cp /usr/bin/qemu-aarch64-static .
+
+
+TASK 6
+docker build -t iox_aarch64_webserver .
+
+docker run -ti iox_aarch64_webserver
+
+uname -a 
+
+python webserver.py &
+
+netstat -tlpn
+
+
+TASK 7
+vi package.yaml
+
+docker save -o rootfs.tar iox_aarch64_webserver
+
+ls
+
+
+
+
+
+
